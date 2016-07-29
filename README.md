@@ -1,5 +1,5 @@
 # Tomcat with Nginx
-This docker image uses official tomcat alhine (https://hub.docker.com/_/tomcat/) as base image and add the nginx (https://hub.docker.com/_/nginx/) for :-
+This docker image uses official tomcat alpine (https://hub.docker.com/_/tomcat/) as base image and add the nginx (https://hub.docker.com/_/nginx/) for :-
 1. serving static files 
 2. do basic http headers eg. cache / expires
 3. redirecting 
