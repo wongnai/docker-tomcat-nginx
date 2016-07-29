@@ -21,8 +21,17 @@ Just pass any argument when running a new container so that the container is not
 	sudo docker run -d skrityak/tomcat-nginx:8.5.4-jre8-alpine no-nginx
 
 
-## Conf Directory
-Basically this image should be used as base image. The tomcat and nginx configuration directories respectively are at :-
+## Extending the image
+Basically this image should be used as base image. 
+
+### Conf Directory
+The tomcat and nginx configuration directories respectively are at :-
 * /usr/local/tomcat/
 * /etc/nginx
+
+### Entrypoint
+The entry point of the image should look like this:-
+
+	ENTRYPOINT ["docker-entrypoint.sh"]
+	CMD ["with-nginx"]
 
