@@ -1,4 +1,4 @@
-FROM tomcat:8.5.4-jre8
+FROM tomcat:8.5.5-jre8
 
 MAINTAINER Suparit Krityakien <suparit@wongnai.com>
 
