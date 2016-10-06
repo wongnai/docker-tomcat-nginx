@@ -9,7 +9,7 @@ This docker image uses official tomcat (https://hub.docker.com/_/tomcat/) as bas
 ## Starting a container with nignx (default)
 To start a container with nginx (daemon), just simply run the container without any argument.
 	
-	sudo docker run -d skrityak/tomcat-nginx:8.5.4-jre8
+	sudo docker run -d wongnai/tomcat-nginx:8.5.5-jre8
 	
 After starting the container, you should be able to make a request to both nginx (port 80) and tomcat (port 8080).
 
@@ -18,7 +18,7 @@ After starting the container, you should be able to make a request to both nginx
 ### Without Nginx
 Just pass any argument when running a new container so that the container is not start nginx daemon.
 
-	sudo docker run -d skrityak/tomcat-nginx:8.5.4-jre8 no-nginx
+	sudo docker run -d wongnai/tomcat-nginx:8.5.5-jre8 no-nginx
 
 
 ## Extending the image
