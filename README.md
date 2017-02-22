@@ -35,3 +35,9 @@ The entry point of the image should look like this:-
 	ENTRYPOINT ["docker-entrypoint.sh"]
 	CMD ["with-nginx"]
 
+
+
+## Warm up script
+
+You can put warm up script at path `/usr/local/tomcat/bin/warmup.sh`, 
+So it will run after start tomcat server. After warm up script finished, it will start nginx then.
