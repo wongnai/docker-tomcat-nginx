@@ -38,7 +38,7 @@ WORKDIR /usr/local/tomcat
 
 RUN chmod +x /usr/local/tomcat/bin/docker-entrypoint.sh
 
-EXPOSE 80 443 8080
+EXPOSE 80 443 8080 8000
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["start"]
