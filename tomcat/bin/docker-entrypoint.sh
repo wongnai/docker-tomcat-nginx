@@ -15,9 +15,9 @@ do
   elif [ "${arg}" = "nowarmup" ]; then
     argWarmUp=0
   fi 
-done
+done 
 
-catalina.sh ${CATALINA_COMMAND:start}
+catalina.sh ${CATALINA_COMMAND:-start}
 
 if [ "${argWarmUp}" = "1" ]; then
   if [ -f /usr/local/tomcat/bin/warmup.sh ]; then
