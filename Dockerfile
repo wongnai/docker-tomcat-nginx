@@ -29,6 +29,8 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 	&& ln -sf /dev/stderr /var/log/nginx/error.log \
 	&& ln -sf /dev/stdout /usr/local/tomcat/logs/catalina.out
 	 
+ENV WARMUP 1
+ENV START_NGINX 1
 
 COPY tomcat/ /usr/local/tomcat/
 
@@ -39,4 +41,4 @@ RUN chmod +x /usr/local/tomcat/bin/docker-entrypoint.sh
 EXPOSE 80 443 8080
 
 ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["with-nginx"]
+CMD ["start"]

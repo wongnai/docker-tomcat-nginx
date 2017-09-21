@@ -17,9 +17,23 @@ After starting the container, you should be able to make a request to both nginx
 ## Starting a container without nginx
 	
 ### Without Nginx
-Just pass any argument when running a new container so that the container is not start nginx daemon.
+To disable nginx, just set environment variable START_NGINX to 0. 
 
-	sudo docker run -d wongnai/tomcat-nginx:8.5.20-jdk no-nginx
+	sudo docker run -d -e START_NGINX=0 wongnai/tomcat-nginx:8.5.20-jdk
+
+## Docker entrypoint
+The docker-entrypoint.sh directly passes command line arguments to catalina.sh.
+For example, to run catalina in "jdpa start" mode, just run docker container using the following command:-
+
+	sudo docker run -d wongnai/tomcat-nginx:8.5.20-jdk jdpa start
+
+## Warm up script
+You can put warm up script at path `/usr/local/tomcat/bin/warmup.sh`, 
+So it will run after start tomcat server. After warm up script finished, it will start nginx then.
+
+To disable the warmup process, try setting environment varaible WARMUP to 0:-
+
+	sudo docker run -d -e WARMUP=0 wongnai/tomcat-nginx:8.5.20-jdk 
 
 
 ## Extending the image
@@ -34,28 +48,4 @@ The tomcat and nginx configuration directories respectively are at :-
 The entry point of the image should look like this:-
 
 	ENTRYPOINT ["docker-entrypoint.sh"]
-	CMD ["with-nginx"]
-
-
-## Docker entrypoint
-The docker-entrypoint.sh can parse multiple arguments. The following list are all command arguments:-
-
-* with-nginx - start nginx
-* nowarmup - disable warmup process
-
-For example, to run the container with nginx but without warmup, just run the following command:-
-
-	sudo docker run -d wongnai/tomcat-nginx:8.5.20-jdk with-nginx nowarmup
-
-
-### Catalina command
-You are able to pass command to the catalina.sh using environment variable "CATALINA_COMMAND" (default to start).
-For example, to run catalina in debug mode, just start docker container using the following command:-
-
-	sudo docker run -d \
-		-e CATALINA_COMMAND=debug
-		wongnai/tomcat-nginx:8.5.20-jdk no-nginx
-
-### Warm up script
-You can put warm up script at path `/usr/local/tomcat/bin/warmup.sh`, 
-So it will run after start tomcat server. After warm up script finished, it will start nginx then.
+	CMD ["start"]
