@@ -28,7 +28,7 @@ if [ "${argWarmUp}" = "1" ]; then
   fi
 fi
 
-if [ "${argNginx}" = "1"]; then
+if [ "${argNginx}" = "1" ]; then
   nginx -g "daemon on;"
 fi
 
